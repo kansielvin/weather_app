@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
 
   Future getWeather() async {
     http.Response response = await http.get(
-        "http://api.openweathermap.org/data/2.5/weather?q=Singapore&appid=a7d422356beafe3d5b161f95ce5f917e");
+        "http://api.openweathermap.org/data/2.5/weather?q=Singapore&units=metric&appid=a7d422356beafe3d5b161f95ce5f917e");
     var results = jsonDecode(response.body);
     setState(() {
       this.temp = results['main']['temp'];
@@ -41,6 +41,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     this.getWeather();
+    print(city);
   }
 
   @override
@@ -111,11 +112,11 @@ class _HomeState extends State<Home> {
                         humidity != null ? humidity.toString() : "Loading"),
                   ),
                   ListTile(
-                    leading: FaIcon(FontAwesomeIcons.wind),
-                    title: Text("Wind Speed"),
-                    trailing: Text(
-                        windSpeed != null ? windSpeed.toString() : "Loading"),
-                  ),
+                      leading: FaIcon(FontAwesomeIcons.wind),
+                      title: Text("Wind Speed"),
+                      trailing: Text(windSpeed != null
+                          ? windSpeed.toString()
+                          : "Loading")),
                 ],
               ),
             ),
