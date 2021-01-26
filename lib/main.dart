@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
 
   Future getWeather() async {
     http.Response response = await http.get(
-        "http://api.openweathermap.org/data/2.5/weather?q=Singapore&units=metric&appid=9d3a8d89c359f27687bb917572b3f655");
+        "http://api.openweathermap.org/data/2.5/weather?q=Singapore&appid=a7d422356beafe3d5b161f95ce5f917e");
     var results = jsonDecode(response.body);
     setState(() {
       this.temp = results['main']['temp'];
@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           Container(
             height: MediaQuery.of(context).size.height / 3,
-            width: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
             color: Colors.blue,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -119,7 +119,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
